@@ -1,0 +1,85 @@
+Introduction
+
+1. Start new project C:\Users\Nur Shafinaz\Desktop>django-admin startproject foldername
+2. Create another subfolder in mysite folder C:\Users\Nur Shafinaz\Desktop\foldername>py -3.7 manage.py startapp foldername
+3. Run server C:\Users\Nur Shafinaz\Desktop\foldername>py -3.7 manage.py runserver OR C:\Users\Nur Shafinaz\Desktop\foldername>python manage.py runserver
+4. Development server: http://127.0.0:8000/
+5. Copy urls file from mysite folder into subfolder
+6. From primary app (mysite.urls) go to path main.urls, then go to views.homepage function
+
+Models (like a database table)
+
+7. Install the new app first before migrates at mysite settings.py folder ('main.apps.MainConfig') at INSTALLED_APPS part
+8. Add new model / change existing model, you have to make migrations then migrate
+9. Make migrations C:\Users\Nur Shafinaz\Desktop\foldername>python manage.py makemigrations
+10. If you want to know the sql; 'python manage.py sqlmigrate main 0001'
+11. Then migrate; 'python manage.py migrate'
+12. Interactive shell to play with our website; 'python manage.py shell'
+13. In shell, insert new row in database; 'new_Tutorial = Tutorial(tutorial_title="Python", tutorial_content="Django Beginner", tutorial_published=timezone.now())'
+14. Commit the sql; 'new_Tutorial.save()'
+15. Import timezone; 'from django.utils import timezone'
+16. To view 'Tutorial.objects.all()' then 'for t in Tutorial.objects.all():' then 'print(t.tutorial_title)'
+
+Admin & Apps
+
+17. Create admin account; 'python manage.py createsuperuser'
+18. Admin username=admin & password=djangoadmin
+19. Login admin account at http://127.0.0:8000/admin
+20. Just import models at admin.py from models.py that we have created before
+21. Install app; C:\Users\Nur Shafinaz\Desktop\foldername>pip install django-tinymce4-lite
+22. Add the new app first at mysite settings.py folder ('tinymce') at INSTALLED_APPS part
+23. Copy & paste at mysite settings.py folder (all the 'TINYMCE_DEFAULT_CONFIG')
+24. Add a pointer to the app, edit mysite/mysite/urls.py
+
+Views & Templates
+
+25. Change the homepage function at mysite/main/views.py
+26. Add new 'main' folder & add new subfolder 'home.html' file
+27. Add the style prism.css and prism.js in home.html file
+
+Styling with CSS (CSS framework: Materialize CSS)
+
+28. Add the style material.min.css and material.min.js in home.html file
+29. Create header.html file for nav
+30. Download sass and koala (sass compiler)
+31. After compile the materialize-src-v1.0.0 scss file, then copy the materialize.css file at mysite folder
+32. Swap the materialize.min.css (CDN) with the materialize.css (that you just copied to static/main/css folder) at the top of header.html file
+
+User Registration
+
+33. Run 'python manage.py shell', then run 'from django.contrib.auth.models import User' and 'dir(User)'
+34. csrf_token is standard for cross-site request forgery token
+35. Define register request in views.py file and add register path in urls.py file
+36. Register user account; username=user1 & password=djangouser1
+
+Messages and Includes
+
+37. Add messages javascript in header.html file
+38. Register another user account; username=user2 & password=djangouser2
+39. Create navbar.html and messages.html file inside includes folder, cut&paste from header.html file and add the include path
+
+User Login and Logout
+
+40. Define logout & login request in views.py file and add logout & login path in urls.py file
+41. Create another file named forms.py in main folder to create new user form for registration (not used the default one UserCreationForm)
+42. Delete UserCreationForm import in views.py file
+43. Instead add the new one 'from .forms import NewUserForm' that we have created in forms.py file
+44. Change all the form = NewUserForm
+45. Register another user account; username=user3 & password=djangouser3 but with email=shafinazsanimi@gmail.com
+
+Linking models with Foreign Keys
+
+46. Create tutorial category & tutorial series class in models.py file
+47. Import models, add fieldsets and register models in admin.py file
+
+Working with Foreign Keys
+
+48. Add the slug in views.py file
+49. Add series.html file to display series of category
+
+Dynamic Sidebar
+
+50. Add sidebar at views.py and tutorial.html file
+51. Add javascript at header.html file
+
+Deploying Django to a Server
