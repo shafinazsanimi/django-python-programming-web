@@ -1,0 +1,27 @@
+{% extends 'main/header.html' %}
+
+{% block head %}
+
+	<title>Register</title>
+
+{% endblock %}
+
+{% block content %}
+
+	<br>
+	<form method="POST">
+		{% csrf_token %}
+		{{form.as_p}}
+
+		<button style="background-color:#F4EB16; color:black;" class="btn btn-outline-info" type="submit">Register</button>
+    </form>
+
+    If you already have an account, click <a href="/login" target="blank"><strong>here</strong></a>!
+
+{% endblock %}
+
+<!--
+as_p : paragraph tags
+as_table : as a table
+as_ul : as an unordered list
+-->
