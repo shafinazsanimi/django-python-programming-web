@@ -85,3 +85,5 @@ Dynamic Sidebar
 Deploying Django to a Server
 
 52. 
+
+p/s I'm not deploying it to a server yet.
